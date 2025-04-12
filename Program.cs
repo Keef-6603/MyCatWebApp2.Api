@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MyCatWebApp2.Api.Data;
 using MyCatWebApp2.Api.Repository;
+using System.Text.Json.Serialization;
 
 namespace MyCatWebApp2.Api
 {
@@ -12,7 +13,14 @@ namespace MyCatWebApp2.Api
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddJsonOptions(x =>
+            {
+                // serialize enums as strings in api responses (e.g. Role)
+                x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+
+                // ignore omitted parameters on models to enable optional params (e.g. User update)
+                x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+            }); ;
             builder.Services.AddEndpointsApiExplorer();
             
             builder.Services.AddSwaggerGen(options =>
@@ -23,6 +31,8 @@ namespace MyCatWebApp2.Api
                     Title = "CatBoxRequestWebsite",
                     Description = "Aims to streamline the process of designing and requesting cat boxes tailored to Your Cat(s) Need"
                 });
+                options.DescribeAllParametersInCamelCase();
+
             });
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=CatWebAppDb.db;"), ServiceLifetime.Scoped);
             //builder.Services.AddScoped(typeof(ApplicationDbContext));
@@ -41,6 +51,7 @@ namespace MyCatWebApp2.Api
                 {
                     options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
                     options.RoutePrefix = string.Empty;
+                    
                 });
             }
             // Configure the HTTP request pipeline.

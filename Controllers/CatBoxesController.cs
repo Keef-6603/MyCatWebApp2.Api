@@ -18,17 +18,19 @@ namespace MyCatWebApp2.Api.Controllers
 
         // GET: api/CatBoxes
         [HttpGet]
+        [Route("GetCatBoxes")]
         public async Task<ActionResult<IEnumerable<CatBox>>> GetCatBoxes()
         {
-          if (_context.CatBoxes == null)
-          {
-              return NotFound();
-          }
+            if (_context.CatBoxes == null)
+            {
+                return NotFound();
+            }
             return await _context.CatBoxes.ToListAsync();
         }
 
         // GET: api/CatBoxes/5
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("GetCatBox/{id}")]
         public async Task<ActionResult<CatBox>> GetCatBox(int id)
         {
           if (_context.CatBoxes == null)
@@ -47,7 +49,8 @@ namespace MyCatWebApp2.Api.Controllers
 
         // PUT: api/CatBoxes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut]
+        [Route("UpdateCatBox/{id}")]
         public async Task<IActionResult> PutCatBox(int id, CatBox catBox)
         {
             if (id != catBox.CatBoxId)
@@ -79,6 +82,7 @@ namespace MyCatWebApp2.Api.Controllers
         // POST: api/CatBoxes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Route("AddCatBox")]
         public async Task<ActionResult<CatBox>> PostCatBox(CatBox catBox)
         {
           if (_context.CatBoxes == null)
@@ -92,7 +96,8 @@ namespace MyCatWebApp2.Api.Controllers
         }
 
         // DELETE: api/CatBoxes/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Route("DeleteCatBox/{id}")]
         public async Task<IActionResult> DeleteCatBox(int id)
         {
             if (_context.CatBoxes == null)
@@ -108,6 +113,35 @@ namespace MyCatWebApp2.Api.Controllers
             _context.CatBoxes.Remove(catBox);
             await _context.SaveChangesAsync();
 
+            return NoContent();
+        }
+
+        [HttpPut]
+        [Route("UpdateCatBoxStatus/{id}")]
+        public async Task<IActionResult> UpdateCatBoxStatus(int id, CatBoxStatus status)
+        {
+            var catBox = await _context.CatBoxes.FindAsync(id);
+            if (catBox == null)
+            {
+                return NotFound();
+            }
+            catBox.RequestStatus = status;
+            _context.Entry(catBox).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CatBoxExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
             return NoContent();
         }
 

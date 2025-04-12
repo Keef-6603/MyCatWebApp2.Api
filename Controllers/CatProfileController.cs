@@ -16,6 +16,7 @@ namespace MyCatWebApp2.Api.Controllers
 
         // GET: api/<DataController>
         [HttpGet]
+        [Route("GetAllCats")]
         public async Task<ActionResult<IEnumerable<CatProfile>>> GetAllCats()
         {
             if (_repo.CheckDbConncection())
@@ -25,7 +26,8 @@ namespace MyCatWebApp2.Api.Controllers
             return NotFound();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("GetCatProfile/{id}")]
         public async Task<ActionResult<CatProfile>> GetCatProfile(int id)
         {
             var model = await _repo.SelectById(id);
@@ -39,6 +41,7 @@ namespace MyCatWebApp2.Api.Controllers
         }
 
         [HttpPost]
+        [Route("CreateCatProfile")]
         public async Task<ActionResult<CatProfile>> CreatCatProfile([FromBody] CatProfile model)
         {
             await _repo.CreateAsync(model);
@@ -46,7 +49,8 @@ namespace MyCatWebApp2.Api.Controllers
            
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
+        [Route("UpdateCatProfile/{id}")]
         public async Task<IActionResult> UpdateCatProfile(long id, CatProfile model)
         {
             if (id != model.Id)
@@ -59,7 +63,8 @@ namespace MyCatWebApp2.Api.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Route("DeleteCatProfile/{id}")]
         public async Task<IActionResult> DeleteCatProfile(int id) 
         {
             _repo.DeleteById(id);   
