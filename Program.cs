@@ -23,13 +23,21 @@ namespace MyCatWebApp2.Api
             }); ;
             builder.Services.AddEndpointsApiExplorer();
             
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
+
             builder.Services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "CatBoxRequestWebsite",
-                    Description = "Aims to streamline the process of designing and requesting cat boxes tailored to Your Cat(s) Need"
+                    Title = "CatBoxRequest.API",
+                    Description = ""
                 });
                 options.DescribeAllParametersInCamelCase();
 
@@ -63,7 +71,8 @@ namespace MyCatWebApp2.Api
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             //app.MapControllers();
-            // Disable CORS since angular will be running on port 4200 and the service on port 5258.
+
+            // Enable CORS for all origins, methods, and headers
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.Run();
