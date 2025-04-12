@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './show-catbox.component.css'
 })
 export class ShowCatboxComponent {
-
+  dataSource: any;
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
