@@ -1,31 +1,36 @@
-
-
-<div class="input-group">
-  <div class="d-flex flex-row bd-highlight mb-9">
-    <button (click)="toggleVisibility()" type="button" class="btn btn-outline-secondary btn-sm">
-     Add A New Cat Profile 
-    </button>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" autocomplete="off">
+  <div class="input-group">
+    <div class="d-flex flex-row bd-highlight mb-9">
+      <button (click)="toggleVisibility()" type="button" class="btn btn-outline-secondary btn-sm">
+        Add A New Cat Profile
+      </button>
+    </div>
+    <div class="d-flex flex-row bd-highlight mb-9">
+      &nbsp; &nbsp; &nbsp;
+    </div>
+    <div class="d-flex flex-row bd-highlight mb-9">
+      <button (click)="toggleSelectVisibility()" type="button" class="btn btn-outline-secondary btn-sm">
+        Select A Cat Profile
+      </button>
+    </div>
   </div>
-  <div class="d-flex flex-row bd-highlight mb-9">
-    &nbsp; &nbsp; &nbsp;
-  </div>
-  <div class="d-flex flex-row bd-highlight mb-9">
-    <button  type="button" class="btn btn-outline-secondary btn-sm">
-      Select A Cat Profile
-    </button>
-  </div>
-</div>
-&nbsp;
+  &nbsp;
 
-<div *ngIf="isVisible">
-  <app-add-edit-catprofile></app-add-edit-catprofile>
-</div>
+  <div *ngIf="isVisible">
+    <app-add-edit-catprofile></app-add-edit-catprofile>
+  </div>
+  <div *ngIf="isSelectVisible">
+    <app-list-select-catprofile></app-list-select-catprofile>
+  </div>
 
   <div class="d-flex flex-row bd-highlight mb-9">
     <div class="p-2 w-100 bd-highlight">
       <div class="input-group mb-12">
         <span class="input-group-text">Box Type</span>
-        <input type="text" class="form-control">
+        <input type="text" id="type" formControlName="type" class="form-control" [class.error]="type?.touched && type?.invalid">
+      </div>
+      <div class="error-message" *ngIf="type?.touched && type?.invalid">
+        <div *ngIf="type?.errors?.['required']"><b style="color:red">box type is required</b></div>
       </div>
       &nbsp;
       <div class="input-group mb-12">
@@ -45,5 +50,9 @@
       </div>
     </div>
   </div>
+
+</form>
+
+ 
 
 

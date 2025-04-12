@@ -19,7 +19,7 @@ export class AddEditCatboxComponent {
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      type: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       subject: ['', [Validators.required, Validators.maxLength(50)]],
       message: ['', [Validators.required, Validators.minLength(10)]],
@@ -27,13 +27,16 @@ export class AddEditCatboxComponent {
   }
 
   isVisible = false;
-
+  isSelectVisible = false;
   toggleVisibility() {
     this.isVisible = !this.isVisible;
   }
 
-  get name() {
-    return this.contactForm.get('name');
+  toggleSelectVisibility() {
+    this.isSelectVisible = !this.isSelectVisible;
+  }
+  get type() {
+    return this.contactForm.get('type');
   }
 
   get email() {
