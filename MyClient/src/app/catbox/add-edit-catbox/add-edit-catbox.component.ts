@@ -19,8 +19,8 @@ export class AddEditCatboxComponent {
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
-      type: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
+      type: ['', [Validators.required ]],
+      size: ['', [Validators.required]],
       subject: ['', [Validators.required, Validators.maxLength(50)]],
       message: ['', [Validators.required, Validators.minLength(10)]],
     });
@@ -39,8 +39,8 @@ export class AddEditCatboxComponent {
     return this.contactForm.get('type');
   }
 
-  get email() {
-    return this.contactForm.get('email');
+  get size() {
+    return this.contactForm.get('size');
   }
 
   get subject() {

@@ -12,12 +12,12 @@ import { ShowCatprofileComponent } from './catprofile/show-catprofile/show-catpr
 const routes: Routes = [
   { path: 'catbox', component: CatboxComponent },
   { path: 'catbox/add', component: AddEditCatboxComponent },
-  { path: 'catbox/edit/:id', component: AddEditCatboxComponent },
-  { path: 'catbox/show/:id', component: ShowCatboxComponent },
+  //{ path: 'catbox/edit/:id', component: AddEditCatboxComponent },
+  //{ path: 'catbox/show/:id', component: ShowCatboxComponent },
   { path: 'catprofile', component: CatprofileComponent },
   { path: 'catprofile/add', component: AddEditCatprofileComponent },
-  { path: 'catprofile/edit/:id', component: AddEditCatprofileComponent },
-  { path: 'catprofile/show/:id', component: ShowCatprofileComponent },
+  //{ path: 'catprofile/edit/:id', component: AddEditCatprofileComponent },
+  //{ path: 'catprofile/show/:id', component: ShowCatprofileComponent },
   { path: '', redirectTo: '/catbox', pathMatch: 'full' }, // Redirect to catbox by default}
 ];
 

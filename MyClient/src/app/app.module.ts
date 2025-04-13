@@ -11,6 +11,7 @@ import { CatprofileComponent } from './catprofile/catprofile.component';
 import { AddEditCatprofileComponent } from './catprofile/add-edit-catprofile/add-edit-catprofile.component';
 import { ShowCatprofileComponent } from './catprofile/show-catprofile/show-catprofile.component';
 import { ListSelectCatprofileComponent } from './catprofile/list-select-catprofile/list-select-catprofile.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ListSelectCatprofileComponent } from './catprofile/list-select-catprofi
     CatprofileComponent,
     AddEditCatprofileComponent,
     ShowCatprofileComponent,
-    ListSelectCatprofileComponent
+    ListSelectCatprofileComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

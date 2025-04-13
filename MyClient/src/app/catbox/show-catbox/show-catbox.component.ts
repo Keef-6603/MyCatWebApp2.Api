@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Catbox, dataset } from '../../data';
 @Component({
   selector: 'app-show-catbox',
   standalone: false,
@@ -7,8 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './show-catbox.component.css'
 })
 export class ShowCatboxComponent {
-  dataSource: any;
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  searchText: string = '';
+  //catboxes = [
+  //  { Profile: 'John Doe', BoxSize: 25, Boxtype: 'Standard', RegistrationStatus:'Approved' },
+  //  { Profile: 'Jane Smith', BoxSize: 30, Boxtype: 'Economy', RegistrationStatus:'Pending' },
+  //  { Profile: 'Michael Johnson', BoxSize: 35, Boxtype: 'Deluxe', RegistrationStatus:'Rejected' }
+  //];
+  catboxes: Array<Catbox> = dataset;
 }

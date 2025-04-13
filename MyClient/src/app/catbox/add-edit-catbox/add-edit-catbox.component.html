@@ -35,7 +35,10 @@
       &nbsp;
       <div class="input-group mb-12">
         <span class="input-group-text">Box Size</span>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" id="size" formControlName="size" [class.error]="size?.touched && size?.invalid">
+      </div>
+      <div class="error-message" *ngIf="size?.touched && size?.invalid">
+        <div *ngIf="size?.errors?.['required']"><b style="color:red">box size is required</b></div>
       </div>
       &nbsp;
       <div class="input-group mb-12">
