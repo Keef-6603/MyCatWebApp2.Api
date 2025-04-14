@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Catprofile, dataset_2 } from '../../data';
 @Component({
   selector: 'app-show-catprofile',
   standalone: false,
@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './show-catprofile.component.css'
 })
 export class ShowCatprofileComponent {
+  searchText: string = '';
 
+  catprofiles: Array<Catprofile> = dataset_2;
 }

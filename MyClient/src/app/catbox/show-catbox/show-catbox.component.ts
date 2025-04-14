@@ -8,10 +8,6 @@ import { Catbox, dataset } from '../../data';
 })
 export class ShowCatboxComponent {
   searchText: string = '';
-  //catboxes = [
-  //  { Profile: 'John Doe', BoxSize: 25, Boxtype: 'Standard', RegistrationStatus:'Approved' },
-  //  { Profile: 'Jane Smith', BoxSize: 30, Boxtype: 'Economy', RegistrationStatus:'Pending' },
-  //  { Profile: 'Michael Johnson', BoxSize: 35, Boxtype: 'Deluxe', RegistrationStatus:'Rejected' }
-  //];
+
   catboxes: Array<Catbox> = dataset;
 }

@@ -85,3 +85,97 @@ export const dataset: Array<Catbox> = [
 
   },
 ];
+
+export interface Catprofile {
+  Id: number,
+  Name: string,
+  NickName: string,
+  Age: number,
+  Color: string,
+  Weight: number,
+  Sex: string,
+  PurrferedBoxSize: string,
+  Created: string,
+  IsApproved: boolean
+
+}
+
+export const dataset_2: Array<Catprofile> = [
+  {
+    Id: 0,
+    Name: 'Snuggles',
+    NickName: '',
+    Age: 4,
+    Color: 'black',
+    Weight: 35,
+    Sex: 'Femail',
+    PurrferedBoxSize: 'large',
+    Created: '04132025',
+    IsApproved: true
+  },
+  {
+    Id: 1,
+    Name: 'Smudge',
+    NickName: '',
+    Age: 4,
+    Color: 'black and white',
+    Weight: 36,
+    Sex: 'Femail',
+    PurrferedBoxSize: 'large',
+    Created: '04132025',
+    IsApproved: true
+
+  },
+  {
+    Id: 2,
+    Name: 'Sniffles',
+    NickName: '',
+    Age: 6,
+    Color: 'calico',
+    Weight: 35,
+    Sex: 'mail',
+    PurrferedBoxSize: 'large',
+    Created: '04132025',
+    IsApproved: false
+  },
+  {
+    Id: 3,
+    Name: 'tiger',
+    NickName: '',
+    Age: 2,
+    Color: 'orange',
+    Weight: 20,
+    Sex: 'Femail',
+    PurrferedBoxSize: 'large',
+    Created: '04132025',
+    IsApproved: true
+
+  },
+  {
+    Id: 4,
+    Name: 'Snuffles',
+    NickName: '',
+    Age: 4,
+    Color: 'gray',
+    Weight: 20,
+    Sex: 'Femail',
+    PurrferedBoxSize: 'large',
+    Created: '04132025',
+    IsApproved: true
+
+  },
+  {
+    Id: 5,
+    Name: 'Lucky',
+    NickName: 'Yard bird',
+    Age: 5,
+    Color: 'black',
+    Weight: 22,
+    Sex: 'Femail',
+    PurrferedBoxSize: 'large',
+    Created: '04132025',
+    IsApproved: true
+
+  },
+
+];

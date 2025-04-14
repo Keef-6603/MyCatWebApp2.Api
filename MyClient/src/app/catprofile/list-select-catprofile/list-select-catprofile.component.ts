@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Catprofile, dataset_2 } from '../../data';
+
 
 @Component({
   selector: 'app-list-select-catprofile',
@@ -7,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './list-select-catprofile.component.css'
 })
 export class ListSelectCatprofileComponent {
+  catprofiles: Array<Catprofile> = dataset_2;
+
 
 }
